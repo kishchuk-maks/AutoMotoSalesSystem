@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build C++",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "main.cpp",
+        "vehicle.cpp",
+        "inventory.cpp",
+        "-o",
+        "AutoMoto.exe"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}
