@@ -1,14 +1,11 @@
 #pragma once
-#include "vehicle.h"
+#include "Vehicle.h"
 
 class Car : public Vehicle {
-public:
-    Car(std::string b, std::string m, int y, double p)
-        : Vehicle(b, m, y, p) {}
+private:
+    int doors;
 
-    void display() const override {
-        std::cout << "[Car] ID: " << id << ", " << brand << " " << model
-                  << ", " << year << ", $" << price << ", "
-                  << (sold ? "Sold" : "Available") << std::endl;
-    }
+public:
+    Car(const std::string& brand, const std::string& model, int year, double price, int doors);
+    void printDetails() const override; // Перевизначення методу
 };

@@ -4,23 +4,21 @@
 
 class Vehicle {
 protected:
-    static int nextId;
-    int id;
     std::string brand;
     std::string model;
     int year;
     double price;
-    bool sold;
 
 public:
-    Vehicle(std::string b, std::string m, int y, double p)
-        : brand(b), model(m), year(y), price(p), sold(false), id(nextId++) {}
+    Vehicle(const std::string& brand, const std::string& model, int year, double price);
+    virtual ~Vehicle() = default;
 
-    virtual ~Vehicle() {}
-    int getId() const { return id; }
-    std::string getModel() const { return model; }
-    void sell() { sold = true; }
-    bool isSold() const { return sold; }
+    // Віртуальний метод для виведення інформації (поліморфізм)
+    virtual void printDetails() const;
 
-    virtual void display() const = 0;
+    // Гетери
+    std::string getBrand() const;
+    std::string getModel() const;
+    int getYear() const;
+    double getPrice() const;
 };

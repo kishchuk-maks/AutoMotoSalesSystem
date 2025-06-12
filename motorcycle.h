@@ -1,14 +1,11 @@
 #pragma once
-#include "vehicle.h"
+#include "Vehicle.h"
 
 class Motorcycle : public Vehicle {
-public:
-    Motorcycle(std::string b, std::string m, int y, double p)
-        : Vehicle(b, m, y, p) {}
+private:
+    bool hasSidecar;
 
-    void display() const override {
-        std::cout << "[Motorcycle] ID: " << id << ", " << brand << " " << model
-                  << ", " << year << ", $" << price << ", "
-                  << (sold ? "Sold" : "Available") << std::endl;
-    }
+public:
+    Motorcycle(const std::string& brand, const std::string& model, int year, double price, bool hasSidecar);
+    void printDetails() const override;
 };
