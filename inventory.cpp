@@ -1,31 +1,28 @@
-#include "inventory.h"
+#pragma once
+#include <string>
 #include <iostream>
 
-void Inventory::addVehicle(std::shared_ptr<Vehicle> v) {
-    vehicles.push_back(v);
-}
+class Vehicle {
+protected:
+    int id;
+    bool sold;
+    std::string brand;
+    std::string model;
+    int year;
+    double price;
 
-void Inventory::displayVehicles() const {
-    for (const auto& v : vehicles) {
-        v->display();
-    }
-}
+public:
+    Vehicle(int id, const std::string& brand, const std::string& model, int year, double price);
+    virtual ~Vehicle() = default;
 
-void Inventory::searchByModel(const std::string& model) const {
-    for (const auto& v : vehicles) {
-        if (v->getModel() == model) {
-            v->display();
-        }
-    }
-}
+    virtual void display() const;
 
-void Inventory::sellVehicle(int id) {
-    for (auto& v : vehicles) {
-        if (v->getId() == id && !v->isSold()) {
-            v->sell();
-            std::cout << "Vehicle sold successfully!" << std::endl;
-            return;
-        }
-    }
-    std::cout << "Vehicle not found or already sold!" << std::endl;
-}
+    int getId() const { return id; }
+    std::string getBrand() const { return brand; }
+    std::string getModel() const { return model; }
+    int getYear() const { return year; }
+    double getPrice() const { return price; }
+
+    bool isSold() const { return sold; }
+    void sell() { sold = true; }
+};
